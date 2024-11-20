@@ -1,0 +1,68 @@
+version: 2
+models:
+    - name: dim_attendant
+      columns:
+          - name: attendent_id
+            tests:
+              - not_null
+              - unique
+
+    - name: dim_review
+      columns:
+        - name: review_id
+          tests:
+            - not_null
+            - unique
+        - name: property_id
+          tests:
+            - not_null 
+            - relationships:
+                to: ref('dim_property')
+                field: property_id
+
+    - name: dim_property
+      columns:
+        - name: property_id
+          tests:
+            - not_null
+            - unique
+
+    - name: fact_booking
+      columns:
+        - name: booking_id
+          tests:
+            - not_null
+            - unique
+        - name: property_id
+          tests:
+            - relationships:
+                to: ref('dim_property')
+                field: property_id
+
+    - name: fact_property
+      columns:
+        - name: property_id
+          tests:
+            - not_null
+            - unique
+            - relationships:
+                to: ref('dim_property')
+                field: property_id  # Use ref() to reference the model
+
+        - name: attendent_id
+          tests:
+            - not_null
+            - relationships:
+                to: ref('dim_attendant')
+                field: attendent_id
+
+        - name: review_id
+          tests:
+            - not_null
+            - relationships:
+                to: ref('dim_review')
+                field: review_id
+
+
+
+

@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: HL_R_S
+    schema: HIL_SCHEMA
+    tables: 
+      - name: Booking_Summary
+      - name: Property_Summary_Table
+      - name: Feedback_Summary_Table

@@ -1,0 +1,21 @@
+SELECT 
+    property_id,
+    attendent_id,
+    review_id,
+    price,
+    weekly_price,
+    monthly_price,
+    security_deposit,
+    cleaning_fee,
+    guests_included,
+    extra_people,
+    minimum_nights,
+    maximum_nights,
+    number_of_reviews,
+    review_scores_rating,
+    reviews_per_month,
+    availability_30,
+    availability_60,
+    availability_90,
+    availability_365
+FROM {{ ref('stg_property') }}  
